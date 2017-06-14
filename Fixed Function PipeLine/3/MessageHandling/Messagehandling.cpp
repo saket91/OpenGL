@@ -53,7 +53,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wparam, LPARAM lparam)
 	{
 
 	case WM_CREATE:
-		MessageBox(hwnd, TEXT("WM_CREATE recieved"), TEXT("Message Type"), MB_OK| MB_ICONINFORMATION);
+		MessageBox(hwnd, TEXT("WM_CREATE recieved"), TEXT("Message Type : WM_Create"), MB_OK| MB_ICONINFORMATION);
 		break;
 
 	case WM_LBUTTONDOWN:
@@ -62,7 +62,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wparam, LPARAM lparam)
 		int xPos = GET_X_LPARAM(lparam);
 		int yPos = GET_Y_LPARAM(lparam);
 		swprintf_s(message, MAX_PATH, TEXT("WM_LBUTTON recieved at x=%d, y=%d"), xPos, yPos);
-		MessageBox(hwnd, message, TEXT("Message Type"), MB_OK | MB_ICONINFORMATION);
+		MessageBox(hwnd, message, TEXT("Message Type : LButton Down"), MB_OK | MB_ICONINFORMATION);
 	   }
 	   break;
 
@@ -73,23 +73,23 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wparam, LPARAM lparam)
 		  {
 		  case 0x42:
 			  wcscpy_s(messagesg, MAX_PATH, TEXT("B key is down"));
-			  MessageBox(hwnd, messagesg, TEXT("Message Type"), MB_OK | MB_ICONINFORMATION);
+			  MessageBox(hwnd, messagesg, TEXT("Message Type : Key Down"), MB_OK | MB_ICONINFORMATION);
 			  break;
 		  case 0x46:
 			  wcscpy_s(messagesg, MAX_PATH, TEXT("F key is down"));
-			  MessageBox(hwnd, messagesg, TEXT("Message Type"), MB_OK | MB_ICONINFORMATION);
+			  MessageBox(hwnd, messagesg, TEXT("Message Type : Key Down"), MB_OK | MB_ICONINFORMATION);
 			  break;
 		  case 0x4C:
 			  wcscpy_s(messagesg, MAX_PATH, TEXT("L key is down"));
-			  MessageBox(hwnd, messagesg, TEXT("Message Type"), MB_OK | MB_ICONINFORMATION);
+			  MessageBox(hwnd, messagesg, TEXT("Message Type : Key Down"), MB_OK | MB_ICONINFORMATION);
 			  break;
 		  case 0x54:
 			  wcscpy_s(messagesg, MAX_PATH, TEXT("T key is down"));
-			  MessageBox(hwnd, messagesg, TEXT("Message Type"), MB_OK | MB_ICONINFORMATION);
+			  MessageBox(hwnd, messagesg, TEXT("Message Type : Key Down"), MB_OK | MB_ICONINFORMATION);
 			  break;
 		  case 0x51:
 			  wcscpy_s(messagesg, MAX_PATH, TEXT("Q key is down"));
-			  MessageBox(hwnd, messagesg, TEXT("Message Type"), MB_OK | MB_ICONINFORMATION);
+			  MessageBox(hwnd, messagesg, TEXT("Message Type : Key Down"), MB_OK | MB_ICONINFORMATION);
 			  break;
 		  }
 	    }
