@@ -77,8 +77,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	//Register Class
 	RegisterClassEx(&wndclass);
 
+	int screenWidth = GetSystemMetrics(SM_CXSCREEN);
+	int screenheight = GetSystemMetrics(SM_CYSCREEN);
+
+	int x = (screenWidth / 2) - (800 / 2); //800 window width
+	int y = (screenheight / 2) - (600 / 2); //600 window height
+
 	hwnd = CreateWindow(szAppname, TEXT("My First Window"), WS_OVERLAPPEDWINDOW,
-		100, 10, 1200, 700, NULL, NULL, hInstance, NULL);
+		x, y, 800, 600, NULL, NULL, hInstance, NULL);
 
 	ShowWindow(hwnd, cmdShow);
 	UpdateWindow(hwnd);

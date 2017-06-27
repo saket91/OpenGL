@@ -30,7 +30,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	RegisterClassEx(&wndclass);
 
 	hwnd = CreateWindow(szAppname, TEXT("My First Window"), WS_OVERLAPPEDWINDOW,
-		50, 50, 100, 100, NULL, NULL, hInstance, NULL);
+		50, 50, 500, 500, NULL, NULL, hInstance, NULL);
 
 	ShowWindow(hwnd, cmdShow);
 	UpdateWindow(hwnd);
@@ -57,26 +57,26 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wparam, LPARAM lparam)
 	{
 		if (wparam == 0x46)
 		{
-
 			if (gbIsFullScreen==false)
 			{
 				dm.dmSize = sizeof(DEVMODE);
 				dm.dmDisplayFlags = DM_DISPLAYFLAGS;
 
-				EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &dm);
+				DEVMODE dm1 = { sizeof(DEVMODE) };
+				EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &dm1);
 				
-				LONG retval = ChangeDisplaySettings(&dm, CDS_FULLSCREEN);
+				dm.dmPelsWidth = dm1.dmPelsWidth;
+				dm.dmPelsHeight = dm1.dmPelsHeight;
+				dm.dmBitsPerPel = dm1.dmBitsPerPel;
+				dm.dmFields = DM_PELSWIDTH | DM_PELSHEIGHT;
 
-				/*RECT rc;
-				GetClientRect(hwnd, &rc);
-				
-				InvalidateRect(hwnd, &rc, true);*/
+				LONG retval = ChangeDisplaySettings(NULL, CDS_FULLSCREEN);
 
-				UpdateWindow(hwnd);
 			}
 			else
 			{
-
+				ChangeDisplaySettings(NULL, 0);
+				ShowCursor(TRUE);
 			}
 		}
 	}
