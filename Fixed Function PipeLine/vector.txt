@@ -20,3 +20,51 @@ void ProjectPointInDirection(const float *pointX, const float *pointY, const flo
 	   *outPointY = *pointY + (distance * *directionY);
 	   *outPointZ = *pointZ + (distance * *directionZ);
 }
+
+
+
+///////////////////////Changed
+
+#include "math.h"
+float ComputeVectorLength(float x, float y, float z)
+{
+	return sqrt((x*x) + (y*y) +(z*z));
+}
+
+void ComputeNormalizedVector(float inX, float inY, float inZ ,float *outX, float *outY, float *outZ)
+{
+	float length = sqrt((inX*inX) + (inY*inY) +(inZ*inZ));
+	*outX = inX /length;
+	*outY = inX /length;
+	*outZ = inX /length;
+}
+
+void ProjectPointInDirection( float pointX, float pointY, float pointZ, 
+							  float directionX,  float directionY, float directionZ, 
+							 float *outPointX, float *outPointY, float *outPointZ, float distance)
+{
+	   *outPointX = pointX + (distance * directionX);
+	   *outPointY = pointY + (distance * directionY);
+	   *outPointZ = pointZ + (distance * directionZ);
+}
+
+void DrawConcentricTriangle( float point1X, float point1Y, float point1Z, 
+							 float point2X, float point2Y, float point2Z, 
+							 float point3X, float point3Y, float point3Z
+							 /*int count, float gap*/)
+{
+	float centroidX = point1X + point2X +point3X;
+	float centroidY = point1Y + point2Y +point3Y;
+	float centroidZ = point1Z + point2Z +point3Z;
+
+	float direction1X, direction1Y, direction1Z;
+	ComputeNormalizedVector(point1X - centroidX, point1Y - centroidY, point1Z - centroidZ, &direction1X, &direction1Y, &direction1Z);
+
+	float distance1 = ComputeVectorLength(point1X - centroidX, point1Y - centroidY, point1Z - centroidZ);
+	float distance2 = ComputeVectorLength(point1X - centroidX, point1Y - centroidY, point1Z - centroidZ);
+	float distance3 = ComputeVectorLength(point1X - centroidX, point1Y - centroidY, point1Z - centroidZ);
+	
+	///float projectPoint1X, float projectPoint1Y, float projectPoint1Z;
+
+	//ProjectPointInDirection(&centroidX, &centroidY, &centroidZ, );
+}
