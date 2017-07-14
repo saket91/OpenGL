@@ -11,3 +11,12 @@ void ComputeNormalizedVector(const float *inX, const float *inY, const float *in
 	*outY = *inX /length;
 	*outZ = *inX /length;
 }
+
+void ProjectPointInDirection(const float *pointX, const float *pointY, const float *pointZ, 
+							 const float *directionX, const float *directionY, const float *directionZ, 
+							 float *outPointX, float *outPointY, float *outPointZ, float distance)
+{
+	   *outPointX = *pointX + (distance * *directionX);
+	   *outPointY = *pointY + (distance * *directionY);
+	   *outPointZ = *pointZ + (distance * *directionZ);
+}
